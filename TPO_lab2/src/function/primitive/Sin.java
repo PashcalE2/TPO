@@ -1,7 +1,13 @@
 package function.primitive;
 
-public class Sin {
-    public static double calc(double x, double accuracy) {
+import function.CalculableInterface;
+
+public class Sin implements CalculableInterface {
+
+    public Sin(){
+    }
+
+    public double calc(double x, double accuracy) {
         while (x < -Math.PI) {
             x += 2 * Math.PI;
         }
@@ -32,6 +38,7 @@ public class Sin {
 }
 
 /*
+
 sin => cos => -sin => -cos => sin
 
 f(x) = sin(x) =

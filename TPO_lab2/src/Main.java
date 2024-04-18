@@ -1,20 +1,16 @@
-import function.Cos;
-import function.Custom;
-import function.Log;
-import function.Sec;
+import function.*;
 import function.primitive.Ln;
 import function.primitive.Sin;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.function.Function;
 
 public class Main {
     private static final String csv_dir = "csv";
 
-    private static void writeFunctionValues(String function_name, Function<Double, Double> function, double start, double finish, double step) {
+    private static void writeFunctionValues(String function_name, CalculableInterface function, double start, double finish, double step, double accuracy) {
         if (finish < start) {
             throw new RuntimeException(String.format("finish (%f) < start (%f)", finish, start));
         }
@@ -28,7 +24,7 @@ public class Main {
             pw.println(String.format("x,%s", function_name + "(x)"));
 
             while (start < finish) {
-                pw.println(String.format("%s,%s", Double.toString(start).replace(",", "."), Double.toString(function.apply(start)).replace(",", ".")));
+                pw.println(String.format("%s,%s", Double.toString(start).replace(",", "."), Double.toString(function.calc(start, accuracy)).replace(",", ".")));
                 start += step;
             }
         }
@@ -42,12 +38,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        writeFunctionValues("ln", x -> Ln.calc(x, 0.0001), 0, 10, 0.1);
-        writeFunctionValues("log_5", x -> Log.calc(x, 5, 0.0001), 0, 10, 0.1);
-        writeFunctionValues("log_10", x -> Log.calc(x, 10, 0.0001), 0, 10, 0.1);
-        writeFunctionValues("sin", x -> Sin.calc(x, 0.0001), -Math.PI * 10, Math.PI * 10, Math.PI / 36);
-        writeFunctionValues("cos", x -> Cos.calc(x, 0.0001), -Math.PI * 10, Math.PI * 10, Math.PI / 36);
-        writeFunctionValues("sec", x -> Sec.calc(x, 0.0001), -Math.PI * 10, Math.PI * 10, Math.PI / 36);
-        writeFunctionValues("custom", x -> Custom.calc(x, 0.0001), -Math.PI * 10, Math.PI * 10, Math.PI / 36);
+        writeFunctionValues("ln", new Ln(), 0, 10, 0.1, 0.0001);
+        writeFunctionValues("log_5", new Log(5), 0, 10, 0.1, 0.0001);
+        writeFunctionValues("log_10", new Log(10), 0, 10, 0.1, 0.0001);
+        writeFunctionValues("sin", new Sin(), -Math.PI, Math.PI, Math.PI / 36, 0.0001);
+        writeFunctionValues("cos", new Cos(), 0, Math.PI * 2, Math.PI / 36, 0.0001);
+        writeFunctionValues("sec", new Sec(), -Math.PI * 2, Math.PI * 2, Math.PI / 36, 0.0001);
+        writeFunctionValues("custom", new Custom(), -Math.PI * 2, Math.PI * 2, Math.PI / 36, 0.0001);
     }
 }

@@ -1,7 +1,12 @@
 package function.primitive;
 
-public class Ln {
-    public static double calc(double x, double accuracy) {
+import function.CalculableInterface;
+
+public class Ln implements CalculableInterface {
+    public Ln() {
+    }
+
+    public double calc(double x, double accuracy) {
         if (x == 0) {
             return Double.NEGATIVE_INFINITY;
         }
@@ -45,3 +50,9 @@ public class Ln {
         return result;
     }
 }
+
+/*
+
+ln (x) = sum[n=1, inf] { (-1)^(n - 1) * (x - a)^n / (n * a^n) } + ln (a)
+
+*/
