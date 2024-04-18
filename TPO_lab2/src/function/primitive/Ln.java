@@ -1,30 +1,45 @@
 package function.primitive;
 
 public class Ln {
-    public static double[] derivativesAtOne(int order) {
-        double[] derivatives = new double[order + 1];
-        double factorial = 1;
-
-        derivatives[0] = 0;
-
-        for (int i = 1; i < order; i++) {
-            derivatives[i] = factorial;
-            factorial *= -i;
+    public static double calc(double x, double accuracy) {
+        if (x == 0) {
+            return Double.NEGATIVE_INFINITY;
+        }
+        else if (x < 0) {
+            return Double.NaN;
+        }
+        else if (x == 1) {
+            return 0;
         }
 
-        return derivatives;
-    }
-
-    public static double calc(double x, int order) {
-        x -= 1;
         double result = 0;
-        double x_power = x;
-        double sign = 1;
 
-        for (int i = 1; i <= order; i++) {
-            result += sign * x_power / i;
-            sign = -sign;
-            x_power *= x;
+        if (x < 1) {
+            x -= 1;
+
+            double last_result;
+            double x_power = x;
+            double sign = 1;
+            int i = 1;
+
+            do {
+                last_result = result;
+                result += sign * x_power / (double) i;
+
+                x_power *= x;
+                i++;
+                sign = -sign;
+            } while (Math.abs((result - last_result) / last_result) > accuracy);
+        }
+        else {
+            int int_ln_x = 0;
+            result = x;
+            while (result > 1) {
+                result /= Math.E;
+                int_ln_x++;
+            }
+
+            result = calc(result, accuracy) + (double) int_ln_x;
         }
 
         return result;
