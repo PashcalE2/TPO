@@ -10,11 +10,19 @@ public class CustomTest {
     private final double accuracy = 0.0001;
 
     @ParameterizedTest(name = "custom({0}) = {1}")
-    @DisplayName("Что-то")
+    @DisplayName("Проверка точек разрыва")
     @CsvFileSource(resources = "/csv/expected/custom.csv", numLinesToSkip = 1, delimiter = ',')
-    public void checkBetweenPI(double x, double custom) {
+    public void checkCriticalPoints(double x, double answer) {
+        Custom custom = new Custom();
         assertAll(
-                () -> assertEquals(custom, new Custom().calc(x, accuracy), accuracy)
+                () -> assertEquals(answer, custom.calc(x, accuracy), accuracy)
         );
+    }
+
+    @ParameterizedTest(name = "custom({0}) = {1}")
+    @DisplayName("Проверка непрерывных участков")
+    @CsvFileSource(resources = "/csv/expected/custom.csv", numLinesToSkip = 1, delimiter = ',')
+    public void checkContinuousPart(double x, double custom) {
+
     }
 }

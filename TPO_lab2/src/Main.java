@@ -50,32 +50,34 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        double accuracy = 0.0001;
+
         Ln ln = new Ln();
-        writeFunctionValues("actual", "ln", (x) -> ln.calc(x, 0.0001), 0, 10, 0.1);
+        writeFunctionValues("actual", "ln", (x) -> ln.calc(x, accuracy), 0, 10, 0.1);
         writeFunctionValues("expected", "ln", Math::log, 0, 10, 0.1);
 
         Log log_5 = new Log(5);
-        writeFunctionValues("actual", "log_5", (x) -> log_5.calc(x, 0.0001), 0, 10, 0.1);
+        writeFunctionValues("actual", "log_5", (x) -> log_5.calc(x, accuracy), 0, 10, 0.1);
         writeFunctionValues("expected", "log_5", (x) -> Math.log(x) / Math.log(5), 0, 10, 0.1);
 
         Log log_10 = new Log(10);
-        writeFunctionValues("actual", "log_10", (x) -> log_10.calc(x, 0.0001), 0, 10, 0.1);
+        writeFunctionValues("actual", "log_10", (x) -> log_10.calc(x, accuracy), 0, 10, 0.1);
         writeFunctionValues("expected", "log_10", (x) -> Math.log(x) / Math.log(10), 0, 10, 0.1);
 
         Sin sin = new Sin();
-        writeFunctionValues("actual", "sin", (x) -> sin.calc(x, 0.0001), -Math.PI, Math.PI, Math.PI / 36);
+        writeFunctionValues("actual", "sin", (x) -> sin.calc(x, accuracy), -Math.PI, Math.PI, Math.PI / 36);
         writeFunctionValues("expected", "sin", Math::sin, -Math.PI, Math.PI, Math.PI / 36);
 
         Cos cos = new Cos();
-        writeFunctionValues("actual", "cos", (x) -> cos.calc(x, 0.0001), 0, Math.PI * 2, Math.PI / 36);
+        writeFunctionValues("actual", "cos", (x) -> cos.calc(x, accuracy), 0, Math.PI * 2, Math.PI / 36);
         writeFunctionValues("expected", "cos", Math::cos, 0, Math.PI * 2, Math.PI / 36);
 
         Sec sec = new Sec();
-        writeFunctionValues("actual", "sec", (x) -> sec.calc(x, 0.0001), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
+        writeFunctionValues("actual", "sec", (x) -> sec.calc(x, accuracy), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
         writeFunctionValues("expected", "sec", (x) -> 1 / Math.cos(x), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
 
         Custom custom = new Custom();
-        writeFunctionValues("actual", "custom", (x) -> custom.calc(x, 0.0001), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
+        writeFunctionValues("actual", "custom", (x) -> custom.calc(x, accuracy), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
         writeFunctionValues("expected", "custom", Main::customFunction, -Math.PI * 2, Math.PI * 2, Math.PI / 36);
     }
 }
