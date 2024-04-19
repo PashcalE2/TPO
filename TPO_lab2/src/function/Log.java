@@ -3,10 +3,11 @@ package function;
 import function.primitive.Ln;
 
 public class Log implements CalculableInterface {
-    private final Ln ln = new Ln();
+    private final Ln ln;
     private final double base;
 
-    public Log(double base) {
+    public Log(Ln ln, double base) {
+        this.ln = ln;
         this.base = base;
     }
 

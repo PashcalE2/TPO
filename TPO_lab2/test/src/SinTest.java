@@ -10,12 +10,14 @@ public class SinTest {
     private static final double accuracy = 0.0001;
 
     @ParameterizedTest(name = "sin({0}) = {1}")
-    @DisplayName("Полная проверка")
+    @DisplayName("Полная проверка периода")
     @CsvFileSource(resources = "/csv/expected/sin.csv", numLinesToSkip = 1, delimiter = ',')
-    void periodic(double x, double answer) {
+    public void wholePeriod(double x, double answer) {
         final Sin sin = new Sin();
         assertAll(
                 () -> assertEquals(answer, sin.calc(x, accuracy), accuracy)
         );
     }
+
+
 }

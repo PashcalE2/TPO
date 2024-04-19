@@ -3,9 +3,10 @@ package function;
 import function.primitive.Sin;
 
 public class Cos implements CalculableInterface {
-    private final Sin sin = new Sin();
+    private final Sin sin;
 
-    public Cos() {
+    public Cos(Sin sin) {
+        this.sin = sin;
     }
 
     public double calc(double x, double accuracy) {

@@ -3,13 +3,17 @@ package function;
 import function.primitive.Ln;
 
 public class Custom implements CalculableInterface {
-    private final Sec sec = new Sec();
-    private final Ln ln = new Ln();
-    private final Log log_5 = new Log(5);
-    private final Log log_10 = new Log(10);
+    private final Sec sec;
+    private final Ln ln;
+    private final Log log_5;
+    private final Log log_10;
 
 
-    public Custom(){
+    public Custom(Sec sec, Ln ln, Log log_5, Log log_10){
+        this.sec = sec;
+        this.ln = ln;
+        this.log_5 = log_5;
+        this.log_10 = log_10;
     }
 
     public double calc(double x, double accuracy) {

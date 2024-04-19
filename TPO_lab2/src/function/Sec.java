@@ -1,9 +1,10 @@
 package function;
 
 public class Sec implements CalculableInterface {
-    private final Cos cos = new Cos();
+    private final Cos cos;
 
-    public Sec() {
+    public Sec(Cos cos) {
+        this.cos = cos;
     }
 
     public double calc(double x, double accuracy) {
