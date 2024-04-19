@@ -77,7 +77,16 @@ public class Main {
         writeFunctionValues("expected", "sec", (x) -> 1 / Math.cos(x), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
 
         Custom custom = new Custom(sec, ln, log_5, log_10);
-        writeFunctionValues("actual", "custom", (x) -> custom.calc(x, accuracy), -Math.PI * 2, Math.PI * 2, Math.PI / 36);
-        writeFunctionValues("expected", "custom", Main::customFunction, -Math.PI * 2, Math.PI * 2, Math.PI / 36);
+        writeFunctionValues("actual", "custom", (x) -> custom.calc(x, accuracy), -10, 10, (double) 1 / 32);
+        writeFunctionValues("expected", "custom", Main::customFunction, -10, 10, (double) 1 / 32);
+
+        writeFunctionValues("actual", "custom_sec_critical", (x) -> custom.calc(x, accuracy), -Math.PI * 2.5, Math.PI * 2.5, Math.PI / 2);
+        writeFunctionValues("expected", "custom_sec_critical", Main::customFunction, -Math.PI * 2.5, Math.PI * 2.5, Math.PI / 2);
+
+        writeFunctionValues("actual", "custom_logs_critical", (x) -> custom.calc(x, accuracy), 0, 2, (double) 1 / 32);
+        writeFunctionValues("expected", "custom_logs_critical", Main::customFunction, 0, 2, (double) 1 / 32);
+
+        // for plot
+        writeFunctionValues("actual", "custom_for_plot", (x) -> custom.calc(x, accuracy), -10, 10, (double) 1 / 256);
     }
 }

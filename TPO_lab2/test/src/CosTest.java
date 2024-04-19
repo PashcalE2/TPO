@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +14,6 @@ import static org.mockito.Mockito.*;
 
 public class CosTest {
     private static final double accuracy = 0.0001;
-
     private final Sin mockSin = Mockito.mock(Sin.class);
 
     @Test
@@ -32,11 +30,12 @@ public class CosTest {
     public void calcWithMock() {
         double x = 0.1234;
         double sin = 0.123087;
+        double cos_by_sin = Math.pow(1 - sin * sin, 0.5);
 
-        when(mockSin.calc(eq(x + Math.PI / 2), any(Double.class))).thenReturn(sin);
+        when(mockSin.calc(eq(x + Math.PI / 2), any(Double.class))).thenReturn(cos_by_sin);
 
         Cos cos = new Cos(mockSin);
-        assertEquals(Math.pow(1 - sin * sin, 0.5), cos.calc(x, accuracy), accuracy);
+        assertEquals(cos_by_sin, cos.calc(x, accuracy), accuracy);
     }
 
     @ParameterizedTest(name = "cos({0}) = {1}")

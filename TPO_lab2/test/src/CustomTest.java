@@ -17,14 +17,29 @@ public class CustomTest {
     @ParameterizedTest(name = "custom({0}) = {1}")
     @DisplayName("Проверка непрерывных участков")
     @CsvFileSource(resources = "/csv/expected/custom.csv", numLinesToSkip = 1, delimiter = ',')
-    public void checkContinuousPart(double x, double custom) {
-
+    public void checkContinuousPart(double x, double answer) {
+        Ln ln = new Ln();
+        Custom custom = new Custom(new Sec(new Cos(new Sin())), ln, new Log(ln, 5), new Log(ln, 10));
+        assertAll(
+                () -> assertEquals(answer, custom.calc(x, accuracy), accuracy)
+        );
     }
 
     @ParameterizedTest(name = "custom({0}) = {1}")
-    @DisplayName("Проверка точек разрыва")
-    @CsvFileSource(resources = "/csv/expected/custom.csv", numLinesToSkip = 1, delimiter = ',')
-    public void checkCriticalPoints(double x, double answer) {
+    @DisplayName("Проверка точек разрыва при x <= 0")
+    @CsvFileSource(resources = "/csv/expected/custom_sec_critical.csv", numLinesToSkip = 1, delimiter = ',')
+    public void checkSecCriticalPoints(double x, double answer) {
+        Ln ln = new Ln();
+        Custom custom = new Custom(new Sec(new Cos(new Sin())), ln, new Log(ln, 5), new Log(ln, 10));
+        assertAll(
+                () -> assertEquals(answer, custom.calc(x, accuracy), accuracy)
+        );
+    }
+
+    @ParameterizedTest(name = "custom({0}) = {1}")
+    @DisplayName("Проверка точек разрыва при x > 0")
+    @CsvFileSource(resources = "/csv/expected/custom_logs_critical.csv", numLinesToSkip = 1, delimiter = ',')
+    public void checkLogsCriticalPoints(double x, double answer) {
         Ln ln = new Ln();
         Custom custom = new Custom(new Sec(new Cos(new Sin())), ln, new Log(ln, 5), new Log(ln, 10));
         assertAll(

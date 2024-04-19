@@ -1,4 +1,4 @@
-import function.primitive.Sin;
+import function.primitive.Ln;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
@@ -6,16 +6,16 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SinTest {
+public class LnTest {
     private static final double accuracy = 0.0001;
 
-    @ParameterizedTest(name = "sin({0}) = {1}")
+    @ParameterizedTest(name = "ln({0}) = {1}")
     @DisplayName("Полная проверка периода")
-    @CsvFileSource(resources = "/csv/expected/sin.csv", numLinesToSkip = 1, delimiter = ',')
+    @CsvFileSource(resources = "/csv/expected/ln.csv", numLinesToSkip = 1, delimiter = ',')
     public void wholePeriod(double x, double answer) {
-        final Sin sin = new Sin();
+        final Ln ln = new Ln();
         assertAll(
-                () -> assertEquals(answer, sin.calc(x, accuracy), accuracy)
+                () -> assertEquals(answer, ln.calc(x, accuracy), accuracy)
         );
     }
 }
