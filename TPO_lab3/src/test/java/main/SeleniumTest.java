@@ -10,18 +10,21 @@ public class SeleniumTest {
 
     @BeforeAll
     static void prepareDrivers() {
-        Utils.prepareDrivers();
+        Demon.setDriversProperties();
     }
 
     @Test
     void testDriver() {
-        Utils.getDrivers().forEach(this::executeWithCapabilities);
+        assertAll(
+                () -> checkTitle(Demon.newChromeDriver()),
+                () -> checkTitle(Demon.newFirefoxDriver())
+        );
     }
 
-    private void executeWithCapabilities(WebDriver driver) {
-        driver.get(Utils.BASE_URL);
+    private void checkTitle(WebDriver driver) {
+        driver.get(Demon.getSiteUrl());
         String title = driver.getTitle();
-        assertEquals("тайтл", title);
+        assertEquals("Крупнейшая биржа фриланса с лучшими профессионалами рунета. Фриланс и удаленная работа - FL.ru", title);
         driver.quit();
     }
 }
