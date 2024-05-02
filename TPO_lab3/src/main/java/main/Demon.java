@@ -11,7 +11,7 @@ public class Demon {
     private static final String site_url = "https://www.fl.ru";
     private static final String chrome_driver_property = "webdriver.chrome.driver";
     private static final String chrome_driver_path = "drivers/chromedriver.exe";
-    private static final String firefox_driver_property = "webdriver.gecko.driver";
+    private static final String firefox_driver_property = "webdriver.firefox.bin";
     private static final String firefox_driver_path = "drivers/geckodriver.exe";
 
     public static void setDriversProperties() {
