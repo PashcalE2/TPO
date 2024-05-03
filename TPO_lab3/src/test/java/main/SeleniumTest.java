@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SeleniumTest {
 
     @BeforeAll
-    static void prepareDrivers() {
+    public static void prepareDrivers() {
         Demon.setDriversProperties();
     }
 
     @Test
-    void testDriver() {
+    public void testDriver() {
         assertAll(
                 () -> checkTitle(Demon.newChromeDriver()),
                 () -> checkTitle(Demon.newFirefoxDriver())
@@ -23,8 +23,9 @@ public class SeleniumTest {
 
     private void checkTitle(WebDriver driver) {
         driver.get(Demon.getSiteUrl());
-        String title = driver.getTitle();
-        assertEquals("Крупнейшая биржа фриланса с лучшими профессионалами рунета. Фриланс и удаленная работа - FL.ru", title);
+
+        assertEquals("Крупнейшая биржа фриланса с лучшими профессионалами рунета. Фриланс и удаленная работа - FL.ru", driver.getTitle());
+
         driver.quit();
     }
 }

@@ -1,0 +1,164 @@
+{
+  "id": "d82efc13-5480-4499-8ebc-068138c73584",
+  "version": "2.0",
+  "name": "TPO_lab3",
+  "url": "https://www.fl.ru",
+  "tests": [{
+    "id": "2e63723d-3b29-4b25-a8cd-c28e7308c9d0",
+    "name": "Untitled",
+    "commands": [{
+      "id": "67760b16-cc62-4739-a845-2692374340fa",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "851fb9e7-711b-4bb9-957b-6dedbb86394e",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1050x660",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "311feccd-32dd-44a9-adba-ea308d4e791e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Регистрация",
+      "targets": [
+        ["linkText=Регистрация", "linkText"],
+        ["css=.pl-16", "css:finder"],
+        ["xpath=//a[contains(text(),'Регистрация')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/account/registration-choice/')]", "xpath:href"],
+        ["xpath=//ul[2]/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Регистрация')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e109e8fa-3bf7-4a0f-a9bb-4bf7ecba19e3",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mr-sm-36 > .btn",
+      "targets": [
+        ["css=.mr-sm-36 > .btn", "css:finder"],
+        ["xpath=//button[@onclick=\"location.href = 'http://www.fl.ru/account/registration/?providerType=1'\"]", "xpath:attributes"],
+        ["xpath=//div[2]/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Продолжить как фрилансер')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b4b38d5a-204e-4c0b-9f1f-6b78e8c908fc",
+      "comment": "",
+      "command": "click",
+      "target": "id=ui-input-user-email",
+      "targets": [
+        ["id=ui-input-user-email", "id"],
+        ["css=#ui-input-user-email", "css:finder"],
+        ["xpath=//input[@id='ui-input-user-email']", "xpath:attributes"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div/div/div[2]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "c68b748f-b99c-4a3e-aa31-638e26865de0",
+      "comment": "",
+      "command": "type",
+      "target": "id=ui-input-user-email",
+      "targets": [
+        ["id=ui-input-user-email", "id"],
+        ["css=#ui-input-user-email", "css:finder"],
+        ["xpath=//input[@id='ui-input-user-email']", "xpath:attributes"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div/div/div[2]/div[3]/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "1234456"
+    }, {
+      "id": "aa4f8e25-51b6-4beb-a88b-67aa97ca8850",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mt-36",
+      "targets": [
+        ["css=.mt-36", "css:finder"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div/div/div[2]/div[2]", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1872b9db-1c89-45d7-ad44-2116c76f7905",
+      "comment": "",
+      "command": "click",
+      "target": "id=user-password",
+      "targets": [
+        ["id=user-password", "id"],
+        ["css=#user-password", "css:finder"],
+        ["xpath=//input[@id='user-password']", "xpath:attributes"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div/div/div[2]/div[4]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "1aeb4e93-53bb-4c0d-a562-be162d66b3dd",
+      "comment": "",
+      "command": "type",
+      "target": "id=user-password",
+      "targets": [
+        ["id=user-password", "id"],
+        ["css=#user-password", "css:finder"],
+        ["xpath=//input[@id='user-password']", "xpath:attributes"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div/div/div[2]/div[4]/div/input", "xpath:idRelative"],
+        ["xpath=//div[4]/div/input", "xpath:position"]
+      ],
+      "value": "1237asdf&"
+    }, {
+      "id": "9a35ecca-c127-41a6-9b5d-a5726527fe39",
+      "comment": "",
+      "command": "click",
+      "target": "css=.col-12:nth-child(1)",
+      "targets": [
+        ["css=.col-12:nth-child(1)", "css:finder"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "a353d26a-32ad-4aa9-ae24-78366f00508a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.fl-field-icon > use",
+      "targets": [
+        ["css=.fl-field-icon > use", "css:finder"]
+      ],
+      "value": ""
+    }, {
+      "id": "b82ab090-33cd-4d4b-9f9d-492331b2e5dd",
+      "comment": "",
+      "command": "click",
+      "target": "id=qa-registration-button",
+      "targets": [
+        ["id=qa-registration-button", "id"],
+        ["css=#qa-registration-button", "css:finder"],
+        ["xpath=//div[@id='qa-registration-button']", "xpath:attributes"],
+        ["xpath=//div[@id='qa-registration-page']/div[2]/div/div/div/div[2]/div[5]/div", "xpath:idRelative"],
+        ["xpath=//div[5]/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b8c1ee40-a9fd-45f7-bec6-466ada53926e",
+      "comment": "",
+      "command": "close",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "759e820c-53ce-4cf4-a8b0-c9a7557cde3c",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2e63723d-3b29-4b25-a8cd-c28e7308c9d0"]
+  }],
+  "urls": ["https://www.fl.ru/"],
+  "plugins": []
+}

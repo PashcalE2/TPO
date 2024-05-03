@@ -1,9 +1,15 @@
 package main;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +34,7 @@ public class Demon {
     }
 
     public static List<WebDriver> newDrivers() {
-        ArrayList<WebDriver> drivers = new ArrayList<WebDriver>(2);
+        ArrayList<WebDriver> drivers = new ArrayList<>(2);
 
         drivers.add(newChromeDriver());
         drivers.add(newFirefoxDriver());
@@ -38,5 +44,15 @@ public class Demon {
 
     public static String getSiteUrl() {
         return site_url;
+    }
+
+    public static WebElement getElementByXpath(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    public static void waitUntilPageIsReady(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMinutes(1));
+        wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 }
