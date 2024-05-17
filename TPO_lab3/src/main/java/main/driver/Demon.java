@@ -6,12 +6,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Demon {
     private static final String site_url = "https://www.fl.ru";
@@ -47,8 +51,17 @@ public class Demon {
     }
 
     public static WebElement findElement(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        new Actions(driver).scrollToElement(element).perform();
+        return element;
+    }
+
+    public static WebElement findClickableElement(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        new Actions(driver).scrollToElement(element).perform();
+        return element;
     }
 
     public static void waitUntilPageIsReady(WebDriver driver) {

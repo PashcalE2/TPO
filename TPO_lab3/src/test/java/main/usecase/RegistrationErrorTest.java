@@ -33,62 +33,32 @@ public class RegistrationErrorTest {
             driver.quit();
         }
     }
+
     @Test
-    public void doTest() {
+    public void badRegistration() {
         for (WebDriver driver : drivers) {
-            badRegistration(driver);
+            driver.get("https://www.fl.ru/");
+            Demon.waitUntilPageIsReady(driver);
+
+            driver.manage().window().maximize();
+
+            Demon.findElement(driver, By.xpath("//*[@id=\"cookie_accept\"]/div[2]/button")).click();
+            Demon.findElement(driver, By.xpath("//ul[2]/li/a")).click();
+            Demon.findElement(driver, By.cssSelector(".mr-sm-36 > .btn")).click();
+            Demon.findElement(driver, By.id("ui-input-user-email")).sendKeys("1234456");
+            Demon.findElement(driver, By.cssSelector(".mt-36")).click();
+            Demon.findElement(driver, By.id("user-password")).click();
+            Demon.findElement(driver, By.id("user-password")).sendKeys("1237asdf&");
+            Demon.findElement(driver, By.cssSelector(".col-12:nth-child(1)")).click();
+
+            Demon.findElement(driver, By.cssSelector(".fl-field-icon > use")).click();
+
+            {
+                assertDoesNotThrow(() -> Demon.findElement(driver, By.cssSelector(".ui-system__message")));
+            }
+            {
+                assertDoesNotThrow(() -> Demon.findElement(driver, By.cssSelector(".bg-danger > svg")));
+            }
         }
-    }
-
-    private void badRegistration(WebDriver driver) {
-        driver.get("https://www.fl.ru/");
-        Demon.waitUntilPageIsReady(driver);
-
-        driver.manage().window().setSize(new Dimension(1050, 660));
-
-        // driver.findElement(By.xpath("//ul[2]/li/a")).click();
-        Demon.findElement(driver, By.xpath("//ul[2]/li/a")).click();
-
-        // driver.findElement(By.cssSelector(".mr-sm-36 > .btn")).click();
-        Demon.findElement(driver, By.cssSelector(".mr-sm-36 > .btn")).click();
-
-        // driver.findElement(By.id("ui-input-user-email")).sendKeys("1234456");
-        Demon.findElement(driver, By.id("ui-input-user-email")).sendKeys("1234456");
-
-        // driver.findElement(By.cssSelector(".mt-36")).click();
-        Demon.findElement(driver, By.cssSelector(".mt-36")).click();
-
-        // driver.findElement(By.id("user-password")).click();
-        Demon.findElement(driver, By.id("user-password")).click();
-
-        // driver.findElement(By.id("user-password")).sendKeys("1237asdf&");
-        Demon.findElement(driver, By.id("user-password")).sendKeys("1237asdf&");
-
-        // driver.findElement(By.cssSelector(".col-12:nth-child(1)")).click();
-        Demon.findElement(driver, By.cssSelector(".col-12:nth-child(1)")).click();
-
-        // driver.findElement(By.cssSelector(".fl-field-icon > use")).click();
-        Demon.findElement(driver, By.cssSelector(".fl-field-icon > use")).click();
-
-        {
-            // List<WebElement> elements = driver.findElements(By.cssSelector(".ui-system__message"));
-            // assert(elements.size() > 0);
-
-            assertDoesNotThrow(() -> Demon.findElement(driver, By.cssSelector(".ui-system__message")));
-        }
-        {
-            // List<WebElement> elements = driver.findElements(By.cssSelector(".invalid-feedback"));
-            // assert(elements.size() > 0);
-
-            assertDoesNotThrow(() -> Demon.findElement(driver, By.cssSelector(".invalid-feedback")));
-        }
-        {
-            // List<WebElement> elements = driver.findElements(By.cssSelector(".bg-danger > svg"));
-            // assert(elements.size() > 0);
-
-            assertDoesNotThrow(() -> Demon.findElement(driver, By.cssSelector(".bg-danger > svg")));
-        }
-
-        driver.close();
     }
 }
