@@ -1,4 +1,4 @@
-package main;
+package main.driver;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -46,8 +46,8 @@ public class Demon {
         return site_url;
     }
 
-    public static WebElement getElementByXpath(WebDriver driver, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public static WebElement findElement(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
